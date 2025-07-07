@@ -1,19 +1,8 @@
 // queries/getWorkPermit.ts
-import datoCMSClient from './datoCMSClient';
 import { WorkPermit } from '../types';
-
-const GET_WORK_PERMIT = `
-  query {
-    workPermit {
-      visaStatus
-      expiryDate
-      summary
-      additionalInfo
-    }
-  }
-`;
+import { workPermitData } from '../static/staticData';
 
 export async function getWorkPermit(): Promise<WorkPermit> {
-  const data = await datoCMSClient.request<{ workPermit: WorkPermit }>(GET_WORK_PERMIT);
-  return data.workPermit;
+  console.log("🚀 ~ getWorkPermit ~ data:", { workPermit: workPermitData });
+  return workPermitData;
 }
